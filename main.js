@@ -33,21 +33,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+        const saveTodos = () => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    };
+
     const addTodo = (text) => {
         todos.push({ text, completed: false });
-        localStorage.setItem('todos', JSON.stringify(todos));
+        saveTodos();
         renderTodo();
     };
 
     const deleteTodo = (index) => {
         todos.splice(index, 1);
-        localStorage.setItem('todos', JSON.stringify(todos));
+        saveTodos();
         renderTodo();
     };
 
     const toggleTodoCompletion = (index) => {
         todos[index].completed = !todos[index].completed;
-        localStorage.setItem('todos', JSON.stringify(todos));
+        saveTodos();
         renderTodo();
     };
 
